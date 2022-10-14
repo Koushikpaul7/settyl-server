@@ -30,13 +30,13 @@ async function run(){
 
         })
 
-        // create employee 
+        // create employee api
         app.post('/employee', async (req, res) => {
             const newEmployee = req.body;
             const result = await employeeCollection.insertOne(newEmployee);
             res.send(result);
         });
-        // delete employee
+        // delete employee api
         app.delete('/employee/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) };
@@ -60,6 +60,7 @@ async function run(){
               const result = await employeeCollection.updateOne(filter,updateDoc,options);
               res.send(result)
           })
+        
 }
 finally{}
 }
